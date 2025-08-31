@@ -63,6 +63,95 @@ sudo snort -A console -q -c /etc/snort/snort.conf -i enp0s3
 ## 🚨 Attack Simulation
 **1. ICMP Ping Detection**
 
-From Windows Victim → Ping Snort + Snort Console Ouput:
+From Windows Victim → Ping Snort:
 
-#screenshot
+```powershell
+ping 192.168.10.10
+```
+
+Snort Console Ouput:
+
+```CSS
+[**] [1:1000001:1] ICMP Ping Detected [**]
+```
+
+📸 Screenshot: Windows ping + Snort alert side by side
+
+**2. Nmap SYN Scan Detection**
+
+From Kali Attacker → Run Nmap against Victim:
+
+```bash
+sudo nmap -sS -T4 -p 1-1000 192.168.10.30
+```
+
+Snort Console Output:
+
+```CSS
+[**] [1:1000002:1] TCP Portscan Detected [**]
+```
+
+📸 Screenshot: Nmap output + Snort alert
+
+---
+
+## 📊 Results
+
+Successfully detected ICMP ping sweeps from both Kali + Windows
+
+Successfully detected TCP SYN scans with Nmap
+
+Config validated with Snort console alerts and optional (`.pcap`) logs
+
+---
+
+## 📂 Repository Structure
+
+```plaintext
+snort-ids-lab/
+├── README.md
+├── configs/
+│   ├── snort.conf
+│   └── local.rules
+├── screenshots/
+│   ├── snort_running.png
+│   ├── icmp_alert.png
+│   ├── nmap_alert.png
+│   └── wireshark_analysis.png
+├── pcap/
+│   └── portscan.pcap
+└── docs/
+    └── project_summary.pdf
+```
+
+---
+
+## ⚙️ Configuration
+**Local Rules (`/etc/snort/rules/local.rules`)**
+
+```snort
+# Alert on ICMP ping
+alert icmp any any -> 192.168.10.0/24 any (msg:"ICMP Ping Detected"; sid:1000001; rev:1;)
+
+# Alert on TCP SYN scans
+alert tcp any any -> 192.168.10.0/24 any (flags:S; msg:"TCP Portscan Detected"; sid:1000002; rev:1;)
+```
+
+## 🚀 Next Steps
+
+- Expand ruleset for HTTP bruteforce detection
+  
+- Integrate Snort with a SIEM (like Splunk or ELK)
+  
+- Automate detection lab with scripts or Ansible
+
+---
+
+## 💜 Closing Notes
+
+This project reinforced my understanding of IDS fundamentals, rule writing, and packet analysis.
+Snort caught the attacks in real-time, proving how valuable IDS can be in detecting early stages of reconnaissance.
+
+✨ Branded for the journey:
+
+#CyberBabeLoading #ThreatDetection #SnortIDS #BlueTeam
