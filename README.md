@@ -75,7 +75,7 @@ Snort Console Ouput:
 [**] [1:1000001:1] ICMP Ping Detected [**]
 ```
 
-📸 Screenshot: Windows ping + Snort alert side by side
+![📸 ICMP Alert](screenshots/Snort-Windows Traffic.png)
 
 **2. Nmap SYN Scan Detection**
 
