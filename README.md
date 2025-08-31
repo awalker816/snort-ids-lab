@@ -75,7 +75,12 @@ Snort Console Ouput:
 [**] [1:1000001:1] ICMP Ping Detected [**]
 ```
 
-![📸 ICMP Alert](screenshots/Snort-Windows Traffic.png)
+![ICMP Alert](https://github.com/awalker816/snort-ids-lab/blob/0d3cd600bab954d4308e266d47e83bf631c8271d/screenshots/Snort-Windows%20Traffic.png)
+### 🛰️ ICMP Ping Detection (Windows → Snort)
+
+Windows Victim pinging the Snort sensor (`192.168.10.10`) while Snort logs the traffic in real time as **"ICMP Ping Detected"**.
+
+---
 
 **2. Nmap SYN Scan Detection**
 
@@ -91,7 +96,11 @@ Snort Console Output:
 [**] [1:1000002:1] TCP Portscan Detected [**]
 ```
 
-📸 Screenshot: Nmap output + Snort alert
+![📸 Nmap output + Snort alert](https://github.com/awalker816/snort-ids-lab/blob/0d3cd600bab954d4308e266d47e83bf631c8271d/screenshots/nmap_alert.png)
+### 🌐 ICMP Ping Sweep + Nmap Scan (Kali → Snort)
+
+Kali Attacker running an ICMP ping sweep and Nmap host discovery across the subnet.  
+Snort successfully triggered **"ICMP Ping Detected"** alerts in real time, confirming visibility of reconnaissance activity.
 
 ---
 
