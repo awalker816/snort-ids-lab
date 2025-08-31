@@ -110,7 +110,7 @@ Config validated with Snort console alerts and optional (`.pcap`) logs
 ```plaintext
 snort-ids-lab/
 ├── README.md
-├── configs/
+├── config/
 │   ├── snort.conf
 │   └── local.rules
 ├── screenshots/
